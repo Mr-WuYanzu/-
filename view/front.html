@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用javascript ajax发送请求</title>
+    <script src="/public/js/jquery.js"></script>
+    <!--<script src="http://test.1810.com/index.php?c=test&a=js"></script>-->
+    <style>
+        .img{
+            width:150px;
+            height:150px;
+            border: 1px solid #f1f1f1;
+            border-radius: 6px;
+            margin-right: 10px;
+        }
+        #img{
+            padding-top: 55px;
+            padding-left: 15px;
+        }
+        .container{
+                   width: 200px;
+                   height: 20px;
+                   background-color: gray;
+               }
+        #progress{
+                    height: 20px;
+                    background-color: orange;
+                    display: inline-block;
+               }
+
+
+    </style>
+</head>
+<body>
+    <button>点我</button>
+    <!--上传文件-->
+    <form action="http://test.1810.com/index.php?c=upload&a=upload" method="post" id="form">
+        <input type="file" name="file[]" multiple="multiple" accept="image/*" id="file">
+        <input type="button" id="sub" value="点击上传">
+        <div class='container'>
+            <span id="progress"></span>
+        </div>
+    </form>
+    <div id="img">
+    </div>
+    <!--<iframe src="" frameborder="0" name="upload" style="display: block"></iframe>-->
+    <script >
+        $(function () {
+            var totalSize = 0;
+            $(document).on('dblclick','.img',function () {
+                $(this).hide();
+
+            })
+            $('input[type="file"]').change(function () {
+                var files = this.files[0]; //假设file标签没打开multiple属性，那么只取第一个文件就行了
+                name = files.name;
+                size = files.size;
+                type = files.type;
+                url = window.URL.createObjectURL(files); //获取本地文件的url，如果是图片文件，可用于预览图片
+
+                totalSize += size;
+                $("#info").html("文件名：" + name + "<br>文件类型：" + type + "<br>文件大小：" + size + "<br>url: " + url);
+
+                $('#img').empty();
+                var file = this.files;
+                var img = $('#img');
+                for (var i=0;i<file.length;i++) {
+                    var reader = new FileReader();
+                    var name=file[i].name;
+                    reader.onload = function(evt) {
+                        var src = evt.target.result;
+                        img.append("<img src='"+src+"' title='双击取消展示' class='img' iname='"+name+"'>");
+                    };
+                    reader.readAsDataURL(file[i]);
+                }
+            })
+            //上传进度回调函数：
+            function progressHandlingFunction(e) {
+                if (e.lengthComputable) {
+                    $('#progress').attr({value : e.loaded, max : e.total}); //更新数据到进度条
+                    var percent = e.loaded/e.total*100;
+                    $('#progress').html(e.loaded + "/" + e.total+" bytes. " + percent.toFixed(2) + "%");
+                    $('#progress').css('width', percent.toFixed(2) + "%");
+                }
+            }
+            $('#sub').click(function (index) {
+                //多文件上传  #form  form表单的id
+                var file = $('#form')[0];
+                var formData = new FormData(file);
+                var img = $('.img');
+                //页面不刷新进行文件上传
+                $.ajax({
+                    url: "http://test.1810.com/index.php?c=upload&a=upload",
+                    type:'post',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    dataType:'json',
+                    async: true,
+                    xhr: function(){ //获取ajaxSettings中的xhr对象，为它的upload属性绑定progress事件的处理函数
+                        myXhr = $.ajaxSettings.xhr();
+                        if(myXhr.upload){ //检查upload属性是否存在
+                                                     //绑定progress事件的回调函数
+                            myXhr.upload.addEventListener('progress',progressHandlingFunction, false);
+                        }
+                        return myXhr; //xhr对象返回给jQuery使用
+                    },
+                    success: function (data) {
+                        var arr=[];
+                        for(var i=0;i<data.data[0].res.length;i++){
+                            arr[i] = data.data[0].res[i].name;
+                        }
+                        var errnum=data.data[0].faild;
+                        if(data.code==200){
+
+                            img.each(function (index) {
+                                if($.inArray($(this).attr('iname'),arr)!= -1){
+                                    $(this).hide();
+                                };
+                            })
+
+                            alert('上传成功，失败'+errnum+'条');
+                        }else{
+                            alert('上传失败，失败'+errnum+'条');
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                })
+
+            })
+        })
+    </script>
+    <script>
+        $(function(){
+            // $('button').click(function (index) {
+            //     $.ajax({
+            //         beforeSend: function (xhr) {
+            //             xhr.setRequestHeader('x-user-token','1810b');
+            //         },
+            //         url: "http://www.apitest.com/index.php?c=test",
+            //         type: 'PUT',
+            //         data: {},
+            //         dataType: 'json',
+            //         success: function (index) {
+            //             console.log(index)
+            //         },
+            //         error: function (error) {
+            //             console.log(error)
+            //         },
+            //         complete: function (a) {
+            //             alert('ok');
+            //         }
+            //     })
+            // })
+            // function demo(data){
+            //     console.log(data);
+            // }
+            // $('button').click(function () {
+            //     $.getJSON("http://test.1810.com/index.php?c=test&a=js",function (result) {
+            //         alert(1);
+            //     })
+            // })
+            // //json字符串和对象之间的转换
+            // var obj = {user:'zhang',pwd:'ppp'};
+            // //将对象转换为json字符串
+            // var str = JSON.stringify(obj);
+            // //将json字符串转换为对象
+            // var object = JSON.parse(str);
+            // console.log(object);
+            // //xml的解析
+            // var xml = "<students><student><username>root</username><pwd>123</pwd></student><student><username>admin</username><pwd>321</pwd></student></students>";
+            // var XML=new DOMParser();
+            //
+            // console.log(XML.parseFromString(xml,"text/xml"));
+        })
+    </script>
+</body>
+</html>

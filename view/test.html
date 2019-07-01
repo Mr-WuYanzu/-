@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript" src="\public\js\jquery.js"></script>
+	<script type="text/javascript">
+		$.ajax({
+			url: "http://www.restful.com/api/student",
+			type:'get',
+			success:function(res){
+				console.log(res);
+			}
+		})
+	</script>
+</body>
+</html>

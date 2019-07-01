@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用javascript ajax发送请求</title>
+
+    <!--<script src="http://test.1810.com/index.php?c=test&a=js"></script>-->
+    <style>
+        .img{
+            width:150px;
+            height:150px;
+            border: 1px solid #f1f1f1;
+            border-radius: 6px;
+            margin-right: 10px;
+        }
+        #img{
+            padding-top: 55px;
+            padding-left: 15px;
+        }
+        .container{
+                   width: 200px;
+                   height: 20px;
+                   background-color: gray;
+        }
+        #progress{
+                    height: 20px;
+                    background-color: orange;
+                    display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <!--上传文件-->
+        <input type="file" name="file" accept="image/*" id="file" style="display: none">
+        <button id="sub">选择文件</button>
+        <button id="btn">点击上传</button>
+        <div class='container'>
+            <span id="progress"></span>
+        </div>
+    <div id="img">
+
+    </div>
+    <!--<iframe src="" frameborder="0" name="upload" style="display: block"></iframe>-->
+    <script src="/public/js/jquery.js"></script>
+    <script>
+        $(function () {
+            var arr=[];
+            $('#sub').click(function () {
+                $('input[type="file"]').click();
+            })
+            $('#btn').click(function () {
+                var file = $('input[type="file"]')[0].files[0];
+                if($('input[type="file"]')[0].files.length<1){
+                    alert('请选择文件上传');
+                    return;
+                }
+                var chunkSize = 2*1024*1024;
+                var chunks = Math.ceil(file.size/chunkSize);
+                var start = 0;
+                var end = 0;
+                var point = localStorage.getItem(file.name);
+                if(point === null){
+                    for(var i=0;i<chunks;i++){
+                        start=i*chunkSize;
+                        end = (start+chunkSize) > file.size ? file.size : (start+chunkSize);
+                        var content = file.slice(start,end);
+                        var formData = new FormData();
+                        formData.append('file',content);
+                        formData.append('name',file.name);
+                        formData.append('size',file.size);
+                        formData.append('currentChunk',i);
+                        formData.append('chunks',chunks);
+                        $.ajax({
+                            url: "http://www.apitest.com/index.php?c=upload&a=test",
+                            type: 'post',
+                            data:formData,
+                            processData: false,
+                            contentType: false,
+                            dataType: 'json',
+                            success:function (data) {
+                                console.log(data);
+                                if(data.code==200){
+                                    alert('上传成功');
+                                    localStorage.clear(file.name);
+                                }else if(data.code==201){
+                                    var chun = localStorage.getItem(file.name);
+                                    if(chun === null){
+                                        chun = '';
+                                    }
+                                    chun += data.data[0].currentChunk+',';
+                                    localStorage.setItem(file.name,chun);
+                                }else{
+                                    alert(上传失败);
+                                }
+                            },
+                            error:function (error) {
+                                // alert(error);
+                            }
+                        })
+
+                    }
+                }else{
+                    var ar = point.split(',');
+
+                    for(var i=0;i<chunks;i++){
+                        //未上传的接着上传
+                        if(inarray(ar,i)<0){
+                            start=i*chunkSize;
+                            end = (start+chunkSize) > file.size ? file.size : (start+chunkSize);
+                            var content = file.slice(start,end);
+                            var formData = new FormData();
+                            formData.append('file',content);
+                            formData.append('name',file.name);
+                            formData.append('size',file.size);
+                            formData.append('currentChunk',i);
+                            formData.append('chunks',chunks);
+                            $.ajax({
+                                url: "http://www.apitest.com/index.php?c=upload&a=test",
+                                type: 'post',
+                                data:formData,
+                                processData: false,
+                                contentType: false,
+                                dataType: 'json',
+                                success:function (data) {
+                                    console.log(data);
+                                    if(data.code==200){
+                                        alert('上传成功');
+                                        localStorage.clear(file.name);
+                                    }else if(data.code==201){
+                                        var chun = localStorage.getItem(file.name);
+                                        if(chun === null){
+                                            chun = '';
+                                        }
+                                        chun += data.data[0].currentChunk+',';
+                                        localStorage.setItem(file.name,chun);
+                                    }else{
+                                        alert(上传失败);
+                                    }
+                                },
+                                error:function (error) {
+                                    // alert(error);
+                                }
+                            })
+                        }
+
+
+                    }
+                }
+                function inarray(arr,e)
+                {
+                    var res = -1;
+                    arr.forEach(function(v,k){
+                        if(v == e ){
+                            res = 1;
+                        }
+                    })
+                    return res;
+                }
+
+
+
+            })
+
+        })
+    </script>
+</body>
+</html>

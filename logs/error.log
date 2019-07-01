@@ -1,0 +1,97 @@
+[26-Jun-2019 12:06:47 UTC] PHP Notice:  Undefined variable: a in E:\phpstudys\PHPTutorial\WWW\test\controllers\EncryptController.php on line 15
+[26-Jun-2019 12:07:43 UTC] PHP Notice:  Undefined variable: a in E:\phpstudys\PHPTutorial\WWW\test\controllers\EncryptController.php on line 15
+[26-Jun-2019 12:14:59 UTC] PHP Notice:  Undefined variable: a in E:\phpstudys\PHPTutorial\WWW\test\controllers\EncryptController.php on line 15
+[26-Jun-2019 12:22:15 UTC] PHP Notice:  Undefined variable: a in E:\phpstudys\PHPTutorial\WWW\test\controllers\EncryptController.php on line 15
+[26-Jun-2019 12:22:42 UTC] PHP Notice:  Undefined variable: a in E:\phpstudys\PHPTutorial\WWW\test\controllers\EncryptController.php on line 15
+[26-Jun-2019 12:22:59 UTC] PHP Notice:  Undefined variable: a in E:\phpstudys\PHPTutorial\WWW\test\controllers\EncryptController.php on line 15
+[26-Jun-2019 12:23:00 UTC] PHP Notice:  Undefined variable: a in E:\phpstudys\PHPTutorial\WWW\test\controllers\EncryptController.php on line 15
+[26-Jun-2019 12:30:35 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to libs\Autoload::exception() must be an instance of libs\Throwable, instance of Error given in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php:40
+Stack trace:
+#0 [internal function]: libs\Autoload->exception(Object(Error))
+#1 {main}
+  thrown in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php on line 40
+[26-Jun-2019 12:30:35 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method libs\Autoload::fatal() in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php:48
+Stack trace:
+#0 [internal function]: libs\Autoload->shutDown()
+#1 {main}
+  thrown in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php on line 48
+[26-Jun-2019 12:30:58 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to libs\Autoload::exception() must be an instance of libs\Throwable, instance of Error given in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php:40
+Stack trace:
+#0 [internal function]: libs\Autoload->exception(Object(Error))
+#1 {main}
+  thrown in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php on line 40
+[26-Jun-2019 12:30:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method libs\Autoload::fatal() in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php:48
+Stack trace:
+#0 [internal function]: libs\Autoload->shutDown()
+#1 {main}
+  thrown in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php on line 48
+[26-Jun-2019 12:39:51 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to libs\Autoload::exception() must be an instance of libs\Throwable, instance of Error given in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php:40
+Stack trace:
+#0 [internal function]: libs\Autoload->exception(Object(Error))
+#1 {main}
+  thrown in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php on line 40
+[26-Jun-2019 12:39:51 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method libs\Autoload::fatal() in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php:48
+Stack trace:
+#0 [internal function]: libs\Autoload->shutDown()
+#1 {main}
+  thrown in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php on line 48
+[27-Jun-2019 00:07:53 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to libs\Autoload::exception() must be an instance of libs\Throwable, instance of Error given in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php:40
+Stack trace:
+#0 [internal function]: libs\Autoload->exception(Object(Error))
+#1 {main}
+  thrown in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php on line 40
+[27-Jun-2019 00:07:53 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method libs\Autoload::fatal() in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php:48
+Stack trace:
+#0 [internal function]: libs\Autoload->shutDown()
+#1 {main}
+  thrown in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php on line 48
+[27-Jun-2019 00:12:23 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to libs\Autoload::exception() must be an instance of libs\Throwable, instance of Error given in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php:40
+Stack trace:
+#0 [internal function]: libs\Autoload->exception(Object(Error))
+#1 {main}
+  thrown in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php on line 40
+[27-Jun-2019 00:12:23 UTC] PHP Fatal error:  Uncaught Error: Class 'libs\ErrorException' not found in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php:49
+Stack trace:
+#0 [internal function]: libs\Autoload->shutDown()
+#1 {main}
+  thrown in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php on line 49
+[27-Jun-2019 00:12:24 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to libs\Autoload::exception() must be an instance of libs\Throwable, instance of Error given in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php:40
+Stack trace:
+#0 [internal function]: libs\Autoload->exception(Object(Error))
+#1 {main}
+  thrown in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php on line 40
+[27-Jun-2019 00:12:24 UTC] PHP Fatal error:  Uncaught Error: Class 'libs\ErrorException' not found in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php:49
+Stack trace:
+#0 [internal function]: libs\Autoload->shutDown()
+#1 {main}
+  thrown in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php on line 49
+[27-Jun-2019 00:15:57 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to libs\Autoload::exception() must be an instance of libs\Throwable, instance of Error given in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php:40
+Stack trace:
+#0 [internal function]: libs\Autoload->exception(Object(Error))
+#1 {main}
+  thrown in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php on line 40
+[27-Jun-2019 00:15:57 UTC] PHP Fatal error:  Uncaught Error: Class 'libs\ErrorException' not found in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php:49
+Stack trace:
+#0 [internal function]: libs\Autoload->shutDown()
+#1 {main}
+  thrown in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php on line 49
+[27-Jun-2019 00:16:18 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to libs\Autoload::exception() must be an instance of libs\Throwable, instance of Error given in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php:40
+Stack trace:
+#0 [internal function]: libs\Autoload->exception(Object(Error))
+#1 {main}
+  thrown in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php on line 40
+[27-Jun-2019 00:16:18 UTC] PHP Fatal error:  Uncaught Error: Class 'libs\ErrorException' not found in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php:49
+Stack trace:
+#0 [internal function]: libs\Autoload->shutDown()
+#1 {main}
+  thrown in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php on line 49
+[27-Jun-2019 00:16:33 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to libs\Autoload::exception() must be an instance of libs\Throwable, instance of Error given in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php:40
+Stack trace:
+#0 [internal function]: libs\Autoload->exception(Object(Error))
+#1 {main}
+  thrown in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php on line 40
+[27-Jun-2019 00:16:33 UTC] PHP Fatal error:  Uncaught Error: Class 'libs\ErrorException' not found in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php:49
+Stack trace:
+#0 [internal function]: libs\Autoload->shutDown()
+#1 {main}
+  thrown in E:\phpstudys\PHPTutorial\WWW\test\libs\Autoload.php on line 49
